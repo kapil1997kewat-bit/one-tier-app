@@ -1,0 +1,7 @@
+apiVersion: v2
+name: one-tier-app
+description: A Helm chart for deploying the one-tier-app Next.js application
+
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
