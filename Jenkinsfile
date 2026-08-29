@@ -1,18 +1,22 @@
 pipeline {
   agent any
 
+  triggers {
+    pollSCM('H/5 * * * *')
+  }
+
   environment {
     IMAGE_NAME = "one-tier-app"
     DOCKERHUB_REPO = "kapilkewatdevops/one-tier-app"
     IMAGE_TAG = "${env.BUILD_NUMBER}"
-    HELM_RELEASE = "one-tier-app"
     GIT_BRANCH = "main"
+    GIT_REPO_URL = "https://github.com/kapil1997kewat-bit/one-tier-app.git"
   }
 
   stages {
     stage('Checkout') {
       steps {
-        git branch: env.GIT_BRANCH, url: 'https://github.com/kapil1997kewat-bit/one-tier-app.git'
+        git branch: env.GIT_BRANCH, url: env.GIT_REPO_URL
       }
     }
 
@@ -48,21 +52,11 @@ pipeline {
         }
       }
     }
+  }
 
-    stage('Update Helm image tag') {
-      steps {
-        withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-          bat '''
-            python -c "from pathlib import Path; import os; p = Path('helm/one-tier-app/values.yaml'); t = p.read_text(); t = t.replace('repository: kapilkewatdevops/one-tier-app', 'repository: ' + os.environ['DOCKERHUB_REPO']); t = t.replace('tag: latest', 'tag: ' + os.environ['IMAGE_TAG']); p.write_text(t)"
-            git config user.name "Jenkins CI"
-            git config user.email "jenkins@localhost"
-            git add helm/one-tier-app/values.yaml
-            git diff --cached --quiet || git commit -m "Update image tag to %IMAGE_TAG%"
-            git remote set-url origin https://%GIT_USER%:%GIT_PASS%@github.com/kapil1997kewat-bit/one-tier-app.git
-            git push origin HEAD:%GIT_BRANCH%
-          '''
-        }
-      }
+  post {
+    always {
+      cleanWs()
     }
   }
 }
