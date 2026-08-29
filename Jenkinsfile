@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     IMAGE_NAME = "one-tier-app"
-    DOCKERHUB_REPO = "your-dockerhub-username/one-tier-app"
+    DOCKERHUB_REPO = "kapilkewatdevops/one-tier-app"
     IMAGE_TAG = "${env.BUILD_NUMBER}"
     HELM_RELEASE = "one-tier-app"
     GIT_BRANCH = "main"

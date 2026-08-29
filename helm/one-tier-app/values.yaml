@@ -1,9 +1,9 @@
 replicaCount: 2
 
 image:
-  repository: one-tier-app
+  repository: kapilkewatdevops/one-tier-app
   tag: latest
-  pullPolicy: Never
+  pullPolicy: IfNotPresent
 
 nameOverride: ""
 fullnameOverride: ""
