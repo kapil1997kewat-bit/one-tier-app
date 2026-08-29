@@ -7,7 +7,7 @@ export default function AboutPage() {
     <>
       {/* ✅ SEO META DATA */}
       <Head>
-        <title>About | Shubham Narmada Shivling | Original Narmadeshwar Shivling</title>
+        <title>About | Alok Narmada Shivling | Original Narmadeshwar Shivling</title>
 
         <meta
           name="description"
