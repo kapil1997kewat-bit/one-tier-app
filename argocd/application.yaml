@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<your-github-username>/one-tier-app.git
+    repoURL: https://github.com/kapil1997kewat-bit/one-tier-app.git
     targetRevision: main
     path: helm/one-tier-app
   destination:
