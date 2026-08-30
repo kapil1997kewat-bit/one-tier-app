@@ -97,7 +97,7 @@ export default function AboutPage() {
         {/* Welcome Section */}
         <section className="welcome-section text-lg leading-relaxed space-y-4">
           <p>
-            <strong>बकावां की प्रसिद्ध Feature branch- Narmada Shivling Shop</strong> — यहाँ आपको
+            <strong>बकावां की प्रसिद्ध Shubham Narmada Shivling Shop</strong> — यहाँ आपको
             Original Narmada Shivling, Banana Lingam, Swayambhu Shivling,
             Divya Narmada Shivling और Temple Shivling जैसे सभी प्रकार के
             शिवलिंग मिलते हैं। हम Worldwide delivery और 24×7 support प्रदान
